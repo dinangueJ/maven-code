@@ -1,9 +1,15 @@
 pipeline {
     agent any
-     tools{
-      maven'M2_HOME'
+    tools{
+      maven 'M2_HOME'
     }
-    stage(compile){
+     stages{
+      stage('clean'){
+       steps {
+         sh 'mvn clean'
+       }
+    }
+    stage('compile'){
       steps{
         sh 'mvn compile'
       }
@@ -15,6 +21,7 @@ pipeline {
 
       }
     }
-  }
+    
+    }
 
-
+}
