@@ -1,10 +1,7 @@
 pipeline {
     agent any
-     stages{
-      stage('clean'){
-       steps {
-        sh "mvn clean"
-       }
+     tools{
+      maven'M2_HOME'
     }
     stage(compile){
       steps{
@@ -15,7 +12,7 @@ pipeline {
       steps{
         sh 'mvn install'
         sh 'mvn package'
-        
+
       }
     }
     }
